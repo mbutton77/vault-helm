@@ -29,12 +29,14 @@ spec:
   {{- end }}
   selector:
     matchLabels:
+      app: {{ .Values.global.label }}
       app.kubernetes.io/name: {{ template "vault.name" . }}
       app.kubernetes.io/instance: {{ .Release.Name }}
       component: server
   template:
     metadata:
       labels:
+        app: {{ .Values.global.label }}
         helm.sh/chart: {{ template "vault.chart" . }}
         app.kubernetes.io/name: {{ template "vault.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}

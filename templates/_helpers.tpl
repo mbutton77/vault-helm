@@ -291,6 +291,9 @@ storage might be desired by the user.
         {{- include "vault.dataVolumeClaim.annotations" . | nindent 6 }}
         {{- include "vault.dataVolumeClaim.labels" . | nindent 6 }}
       spec:
+        selector:
+          matchLabels:
+            app: {{ .Values.global.label }}
         accessModes:
           - {{ .Values.server.dataStorage.accessMode | default "ReadWriteOnce" }}
         resources:
